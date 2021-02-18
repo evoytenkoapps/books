@@ -1,1 +1,12 @@
-<p>create-book works!</p>
+<form class="main" [formGroup]="profileForm">
+  <label *ngFor="let control of profileForm.controls | keys">
+    {{ control.name }}
+    <input
+      [formControl]="control.group"
+      [class.error]="control.group.invalid"
+      [disabled]="control.group.invalid"
+    />
+  </label>
+</form>
+
+<button (click)="addBook()"></button>
