@@ -10,7 +10,7 @@ import { IBook } from "../../model/book";
 })
 export class CreateBookComponent implements OnInit {
   public profileForm = new FormGroup({
-    name: new FormControl("", [Validators.maxLength(1)]),
+    name: new FormControl("", [Validators.maxLength(1), Validators.required]),
     image: new FormControl(""),
     title: new FormControl(""),
     author: new FormControl(""),

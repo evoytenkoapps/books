@@ -3,7 +3,7 @@
     {{ control.name }}
     <input
       [formControl]="control.group"
-      [class.error]="control.group.invalid"
+      [class.error]="control.group.invalid && control.group.touched"
       [disabled]="control.group.invalid"
     />
   </label>
