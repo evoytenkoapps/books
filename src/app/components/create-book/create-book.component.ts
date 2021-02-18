@@ -12,11 +12,11 @@ export class CreateBookComponent implements OnInit {
   public profileForm = new FormGroup({
     name: new FormControl("", [Validators.maxLength(1), Validators.required]),
     image: new FormControl(""),
-    title: new FormControl(""),
-    author: new FormControl(""),
-    publisher: new FormControl(""),
-    isbn: new FormControl(""),
-    data: new FormControl(""),
+    title: new FormControl("", Validators.required),
+    author: new FormControl("", Validators.required),
+    publisher: new FormControl("", Validators.required),
+    isbn: new FormControl("", Validators.required),
+    date: new FormControl("", Validators.required),
     pages: new FormControl(""),
     rating: new FormControl(""),
     feedback: new FormControl(""),
@@ -31,7 +31,7 @@ export class CreateBookComponent implements OnInit {
       const controls = this.profileForm.controls;
       const book: IBook = {
         author: controls["author"].value,
-        data: controls["data"].value,
+        date: controls["date"].value,
         feedback: controls["feedback"].value,
         image: controls["image"].value,
         isbn: controls["isbn"].value,
@@ -44,6 +44,9 @@ export class CreateBookComponent implements OnInit {
       };
 
       this.dataService.add(book);
+      this.profileForm.reset();
+    } else {
+      this.profileForm.markAllAsTouched();
     }
   }
 
