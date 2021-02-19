@@ -1,9 +1,9 @@
-<form class="main" [formGroup]="profileForm">
+<form class="edit-book-container" [formGroup]="profileForm">
   <label *ngFor="let control of profileForm.controls | keys">
     {{ control.name }}
     <input
       [formControl]="control.group"
-      [class.error]="control.group.invalid && control.group.touched"
+      [class.edit-book-error]="control.group.invalid && control.group.touched"
       [disabled]="control.group.invalid"
     />
   </label>

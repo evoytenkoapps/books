@@ -1,5 +1,6 @@
 <app-edit-book-form
   [book]="book"
+  [checkBook]="addBook$.asObservable()"
   (bookChange)="onAddBook($event)"
 ></app-edit-book-form>
 
