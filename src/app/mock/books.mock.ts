@@ -1,4 +1,4 @@
-import { IBook } from "../model/book";
+import {IBook} from '../model/book';
 
 export class BookMock implements IBook {
   id: number = +new Date();

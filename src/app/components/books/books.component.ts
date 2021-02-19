@@ -1,9 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import { DataService } from "../../service/data.service";
-import { Observable } from "rxjs";
-import { IBook } from "../../model/book";
-import { Route, Router } from "@angular/router";
-import { MyRoutes } from "../../model/routes";
+import {Component, OnInit} from '@angular/core';
+import {BookService} from '../../service/book.service';
+import {Observable} from 'rxjs';
+import {IBook} from '../../model/book';
+import {Router} from '@angular/router';
+import {MyRoutes} from '../../model/routes';
 
 @Component({
   selector: "app-books",
@@ -13,7 +13,7 @@ import { MyRoutes } from "../../model/routes";
 export class BooksComponent implements OnInit {
   public books$: Observable<IBook[]>;
 
-  constructor(private dataService: DataService, private router: Router) {}
+  constructor(private dataService: BookService, private router: Router) {}
 
   ngOnInit() {
     this.books$ = this.dataService.storage$;

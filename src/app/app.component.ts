@@ -1,7 +1,5 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { SideNavComponent } from "./components/side-nav/side-nav.component";
-import { Router } from "@angular/router";
-import { MatSidenavContainer } from "@angular/material";
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: "app-root",
