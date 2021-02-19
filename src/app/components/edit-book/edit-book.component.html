@@ -1,5 +1,11 @@
 <app-edit-book-form
   [book]="book"
   [checkBook$]="getBook$.asObservable()"
+  [isEnable$]="isEdit$.asObservable()"
 ></app-edit-book-form>
-<button class="main-button"></button>
+<button class="main-button" *ngIf="!isEdit$.getValue()" (click)="edit()">
+  Редактировать
+</button>
+<button class="main-button" *ngIf="isEdit$.getValue()" (click)="save()">
+  Сохранить
+</button>

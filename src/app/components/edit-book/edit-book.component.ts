@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { BookService } from "../../service/book.service";
 import { IBook } from "../../model/book";
 import { Router } from "@angular/router";
-import { Subject } from "rxjs";
+import { BehaviorSubject, Subject } from "rxjs";
 import { BookMock } from "../../mock/books.mock";
 
 @Component({
@@ -13,12 +13,19 @@ import { BookMock } from "../../mock/books.mock";
 export class EditBookComponent implements OnInit {
   public getBook$ = new Subject();
   public book: IBook;
+  public isEdit$ = new BehaviorSubject<boolean>(false);
 
-  constructor(private data: BookService, private router: Router) {}
+  constructor(private bookService: BookService, private router: Router) {}
 
   ngOnInit() {
-    this.book = this.data.getBook(+this.router.url.split("/")[2]);
+    this.book = this.bookService.getBook(+this.router.url.split("/")[2]);
   }
 
-  public getBook() {}
+  public edit() {
+    this.isEdit$.next(true);
+  }
+
+  public save() {
+    this.isEdit$.next(false);
+  }
 }

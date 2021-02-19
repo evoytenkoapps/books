@@ -19,6 +19,7 @@ import { takeUntil } from "rxjs/operators";
 export class EditBookFormComponent implements OnInit, OnDestroy {
   @Input() book: IBook;
   @Input() checkBook$: Observable<void>;
+  @Input() isEnable$: Observable<boolean>;
   @Output() bookChange: EventEmitter<IBook> = new EventEmitter<IBook>();
 
   private componentDestroyed: Subject<any> = new Subject();
@@ -48,6 +49,12 @@ export class EditBookFormComponent implements OnInit, OnDestroy {
     this.checkBook$
       .pipe(takeUntil(this.componentDestroyed))
       .subscribe(() => this.addBook());
+
+    this.isEnable$
+      .pipe(takeUntil(this.componentDestroyed))
+      .subscribe((isEnable) =>
+        isEnable ? this.profileForm.enable() : this.profileForm.disable()
+      );
   }
 
   private addBook() {
