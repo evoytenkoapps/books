@@ -12,6 +12,7 @@ import { IBook } from "../../model/book";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Observable, Subject } from "rxjs";
 import { takeUntil, tap } from "rxjs/operators";
+import { DatePipe } from "@angular/common";
 
 @Component({
   selector: "app-edit-book-form",
@@ -28,7 +29,7 @@ export class EditBookFormComponent implements OnInit, OnDestroy, OnChanges {
 
   public profileForm: FormGroup;
 
-  constructor() {}
+  constructor(private datePipe: DatePipe) {}
 
   ngOnInit() {
     this.profileForm = new FormGroup({
@@ -37,8 +38,16 @@ export class EditBookFormComponent implements OnInit, OnDestroy, OnChanges {
       title: new FormControl(this.book.title, Validators.required),
       author: new FormControl(this.book.author, Validators.required),
       publisher: new FormControl(this.book.publisher, Validators.required),
-      isbn: new FormControl(this.book.isbn, Validators.required),
-      date: new FormControl(this.book.date, Validators.required),
+      isbn: new FormControl(this.book.isbn),
+      date: new FormControl(
+        this.datePipe.transform(this.book.date, "dd.MM.yyyy"),
+        [
+          Validators.required,
+          Validators.pattern(
+            /^(0?[1-9]|[12][0-9]|3[01])[.](0?[1-9]|1[012])[.]\d{4}$/
+          ),
+        ]
+      ),
       pages: new FormControl(this.book.pages),
       rating: new FormControl(this.book.rating),
       feedback: new FormControl(this.book.feedback),
