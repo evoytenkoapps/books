@@ -1,10 +1,12 @@
-<app-tool-bar (changeClick)="opened = !opened"></app-tool-bar>
-<mat-sidenav-container class="example-container">
+<mat-sidenav-container>
   <mat-sidenav #sidenav mode="side" [(opened)]="opened" [mode]="'over'">
-    Sidenav content
   </mat-sidenav>
 
   <mat-sidenav-content>
+    <app-tool-bar
+      class="toolbar"
+      (changeClick)="opened = !opened"
+    ></app-tool-bar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
