@@ -4,10 +4,13 @@ import { BehaviorSubject, Subject } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class DataService {
-  private storage$: BehaviorSubject<IBook[]> = new BehaviorSubject<IBook[]>([]);
+  private readonly storage$$: BehaviorSubject<IBook[]> = new BehaviorSubject<
+    IBook[]
+  >([]);
+  public readonly storage$ = this.storage$$.pipe();
 
   public add(book: IBook) {
-    console.log("book aded", book);
-    this.storage$.next(this.storage$.getValue().concat([book]));
+    console.log("aded book", book);
+    this.storage$$.next(this.storage$$.getValue().concat([book]));
   }
 }

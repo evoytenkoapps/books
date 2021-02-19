@@ -10,9 +10,11 @@ import { CommonModule } from "@angular/common";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { ToolBarComponent } from "./components/tool-bar/tool-bar.component";
 import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { BookComponent } from './components/book/book.component';
+import { BooksComponent } from './components/books/books.component';
 
 @NgModule({
-  declarations: [AppComponent, CreateBookComponent, KeysPipe, ToolBarComponent, SideNavComponent],
+  declarations: [AppComponent, CreateBookComponent, KeysPipe, ToolBarComponent, SideNavComponent, BookComponent, BooksComponent],
   imports: [
     CommonModule,
     BrowserModule,

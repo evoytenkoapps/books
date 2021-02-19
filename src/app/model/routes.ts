@@ -1,5 +1,5 @@
 export enum MyRoutes {
-  MAIN = "**",
+  MAIN = "",
   ADD = "add",
   EDIT = "edit",
 }

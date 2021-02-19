@@ -1,9 +1,12 @@
+$toolbar-height = 30px
+
 .content
   padding 16px
+  height: 'calc(100% - %s)' % $toolbar-height
 
 .toolbar
   width 100%
-  height 30px
+  height $toolbar-height
   background-color $palette--1j
   display: flex;
   align-items: center;
