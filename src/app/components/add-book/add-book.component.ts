@@ -1,16 +1,17 @@
-import {Component, OnInit} from '@angular/core';
-import {BookService} from '../../service/book.service';
-import {IBook} from '../../model/book';
-import {Subject} from 'rxjs';
+import { Component, OnInit } from "@angular/core";
+import { BookService } from "../../service/book.service";
+import { IBook } from "../../model/book";
+import { BehaviorSubject, Subject } from "rxjs";
 
 @Component({
-  selector: "app-create-book",
-  templateUrl: "./create-book.component.html",
-  styleUrls: ["./create-book.component.styl"],
+  selector: "app-add-book",
+  templateUrl: "./add-book.component.html",
+  styleUrls: ["./add-book.component.styl"],
 })
-export class CreateBookComponent implements OnInit {
+export class AddBookComponent implements OnInit {
   public addBook$ = new Subject();
   public book: IBook;
+  public isEdit$ = new BehaviorSubject(true);
 
   constructor(private dataService: BookService) {}
 

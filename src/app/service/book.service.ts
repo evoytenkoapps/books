@@ -15,11 +15,6 @@ export class BookService {
     this.storage$$.next(this.storage$$.getValue().concat([book]));
   }
 
-  public getBook(id: number): IBook | null {
-    const book = this.storage$$.getValue().find((book) => book.id === id);
-    return book ? book : null;
-  }
-
   public saveBook(book: IBook) {
     console.log("saveBook", book);
     const books = [...this.storage$$.getValue()];

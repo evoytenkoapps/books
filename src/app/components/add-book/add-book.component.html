@@ -2,6 +2,7 @@
   [book]="book"
   [checkBook$]="addBook$.asObservable()"
   (bookChange)="onAddBook($event)"
+  [isEnable$]="isEdit$.asObservable()"
 ></app-edit-book-form>
 
 <button class="main-button add-button" (click)="addBook()">Добавить</button>

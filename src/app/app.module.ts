@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {CreateBookComponent} from './components/create-book/create-book.component';
+import {AddBookComponent} from './components/add-book/add-book.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {KeysPipe} from './pipes/keys.pipe';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -16,7 +16,7 @@ import {EditBookComponent} from './components/edit-book/edit-book.component';
 import {EditBookFormComponent} from './components/edit-book-form/edit-book-form.component';
 
 @NgModule({
-  declarations: [AppComponent, CreateBookComponent, KeysPipe, ToolBarComponent, SideNavComponent, BookComponent, BooksComponent, EditBookComponent, EditBookFormComponent],
+  declarations: [AppComponent, AddBookComponent, KeysPipe, ToolBarComponent, SideNavComponent, BookComponent, BooksComponent, EditBookComponent, EditBookFormComponent],
   imports: [
     CommonModule,
     BrowserModule,
