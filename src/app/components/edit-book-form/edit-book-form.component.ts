@@ -48,7 +48,7 @@ export class EditBookFormComponent implements OnInit, OnDestroy {
 
     this.checkBook$
       .pipe(takeUntil(this.componentDestroyed))
-      .subscribe(() => this.addBook());
+      .subscribe(() => this.changeBook());
 
     this.isEnable$
       .pipe(takeUntil(this.componentDestroyed))
@@ -57,11 +57,11 @@ export class EditBookFormComponent implements OnInit, OnDestroy {
       );
   }
 
-  private addBook() {
+  private changeBook() {
     if (this.isFormValid()) {
       const controls = this.profileForm.controls;
       const book: IBook = {
-        id: +new Date(),
+        id: this.book.id,
         author: controls["author"].value,
         date: controls["date"].value,
         feedback: controls["feedback"].value,
@@ -76,6 +76,7 @@ export class EditBookFormComponent implements OnInit, OnDestroy {
       };
 
       this.profileForm.reset();
+      console.log("changeBook", book);
       this.bookChange.emit(book);
     } else {
       this.profileForm.markAllAsTouched();

@@ -25,7 +25,9 @@ export class EditBookComponent implements OnInit {
     this.isEdit$.next(true);
   }
 
-  public save() {
+  public save(book: IBook) {
+    console.log("save", book);
     this.isEdit$.next(false);
+    this.bookService.saveBook(book);
   }
 }

@@ -19,4 +19,12 @@ export class BookService {
     const book = this.storage$$.getValue().find((book) => book.id === id);
     return book ? book : null;
   }
+
+  public saveBook(book: IBook) {
+    console.log("saveBook", book);
+    const books = [...this.storage$$.getValue()];
+    const updatedIndex = books.findIndex((el, index) => el.id === book.id);
+    books[updatedIndex] = book;
+    this.storage$$.next(books);
+  }
 }

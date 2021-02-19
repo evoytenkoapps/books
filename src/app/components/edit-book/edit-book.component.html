@@ -2,10 +2,15 @@
   [book]="book"
   [checkBook$]="getBook$.asObservable()"
   [isEnable$]="isEdit$.asObservable()"
+  (bookChange)="save($event)"
 ></app-edit-book-form>
 <button class="main-button" *ngIf="!isEdit$.getValue()" (click)="edit()">
   Редактировать
 </button>
-<button class="main-button" *ngIf="isEdit$.getValue()" (click)="save()">
+<button
+  class="main-button"
+  *ngIf="isEdit$.getValue()"
+  (click)="getBook$.next()"
+>
   Сохранить
 </button>
