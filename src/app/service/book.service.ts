@@ -22,4 +22,9 @@ export class BookService {
     books[updatedIndex] = book;
     this.storage$$.next(books);
   }
+
+  public getBook(id: number): IBook | null {
+    const book = this.storage$$.getValue().find((book) => book.id === id);
+    return book ? book : null;
+  }
 }
