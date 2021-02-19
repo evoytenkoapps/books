@@ -2,8 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { BookService } from "../../service/book.service";
 import { IBook } from "../../model/book";
 import { Router } from "@angular/router";
-import { BehaviorSubject, Subject } from "rxjs";
+import { BehaviorSubject, Observable, Subject } from "rxjs";
 import { BookMock } from "../../mock/books.mock";
+import { map, tap } from "rxjs/operators";
 
 @Component({
   selector: "app-edit-book",
@@ -12,13 +13,18 @@ import { BookMock } from "../../mock/books.mock";
 })
 export class EditBookComponent implements OnInit {
   public getBook$ = new Subject();
-  public book: IBook;
+  public book$: Observable<IBook>;
   public isEdit$ = new BehaviorSubject<boolean>(false);
 
   constructor(private bookService: BookService, private router: Router) {}
 
   ngOnInit() {
-    this.book = this.bookService.getBook(+this.router.url.split("/")[2]);
+    this.book$ = this.bookService.storage$.pipe(
+      map((books) =>
+        books.find((book) => book.id === +this.router.url.split("/")[2])
+      ),
+      tap((book) => console.log("bookis", book))
+    );
   }
 
   public edit() {

@@ -2,21 +2,23 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnChanges,
   OnDestroy,
   OnInit,
   Output,
+  SimpleChanges,
 } from "@angular/core";
 import { IBook } from "../../model/book";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Observable, Subject } from "rxjs";
-import { takeUntil } from "rxjs/operators";
+import { takeUntil, tap } from "rxjs/operators";
 
 @Component({
   selector: "app-edit-book-form",
   templateUrl: "./edit-book-form.component.html",
   styleUrls: ["./edit-book-form.component.styl"],
 })
-export class EditBookFormComponent implements OnInit, OnDestroy {
+export class EditBookFormComponent implements OnInit, OnDestroy, OnChanges {
   @Input() book: IBook;
   @Input() checkBook$: Observable<void>;
   @Input() isEnable$: Observable<boolean>;
@@ -30,10 +32,7 @@ export class EditBookFormComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.profileForm = new FormGroup({
-      name: new FormControl(this.book.name, [
-        Validators.maxLength(1),
-        Validators.required,
-      ]),
+      name: new FormControl(this.book.name, [Validators.required]),
       image: new FormControl(this.book.image),
       title: new FormControl(this.book.title, Validators.required),
       author: new FormControl(this.book.author, Validators.required),
@@ -51,7 +50,10 @@ export class EditBookFormComponent implements OnInit, OnDestroy {
       .subscribe(() => this.changeBook());
 
     this.isEnable$
-      .pipe(takeUntil(this.componentDestroyed))
+      .pipe(
+        takeUntil(this.componentDestroyed),
+        tap((isEnable) => console.log("isEnable", isEnable))
+      )
       .subscribe((isEnable) =>
         isEnable ? this.profileForm.enable() : this.profileForm.disable()
       );
@@ -96,5 +98,17 @@ export class EditBookFormComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.componentDestroyed.next();
     this.componentDestroyed.complete();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.book && this.profileForm) {
+      console.log("changes", changes.book.currentValue);
+      const book = changes.book.currentValue;
+      const controls = this.profileForm.controls;
+
+      for (let controlsKey in controls) {
+        controls[controlsKey].setValue(book[controlsKey]);
+      }
+    }
   }
 }

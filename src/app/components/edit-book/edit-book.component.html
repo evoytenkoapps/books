@@ -1,5 +1,5 @@
 <app-edit-book-form
-  [book]="book"
+  [book]="book$ | async"
   [checkBook$]="getBook$.asObservable()"
   [isEnable$]="isEdit$.asObservable()"
   (bookChange)="save($event)"
