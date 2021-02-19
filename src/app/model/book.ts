@@ -1,24 +1,25 @@
 export interface IBook {
+  readonly id: number;
   // Название(обязательное поле)
-  name: string;
+  readonly name: string;
   // Обложка книги(необязательное поле, если нет, то автоматически подставлять картинку “нет фото”)
-  image: string | null;
+  readonly image: string | null;
   // Описание(обязательное поле)
-  title: string;
+  readonly title: string;
   // Автор(обязательное поле)
-  author: string;
+  readonly author: string;
   // Издательство(обязательное поле)
-  publisher: string;
+  readonly publisher: string;
   // Код ISBN(обязательное поле)
-  isbn: number;
+  readonly isbn: number;
   // Год издания(обязательное поле)
-  date: Date;
+  readonly date: Date;
   // Количество страниц(необязательное поле)
-  pages: number | null;
+  readonly pages: number | null;
   // Рейтинг(необязательное поле, если рейтинга нет, выводить “пустые” звезды)
-  rating: number | null;
+  readonly rating: number | null;
   // Отзывы тех, кто прочитал(необязательное поле)
-  feedback: string;
+  readonly feedback: string;
   // Личные заметки по книге(необязательное поле)
-  note: string | null;
+  readonly note: string | null;
 }

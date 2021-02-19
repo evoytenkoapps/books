@@ -30,6 +30,7 @@ export class CreateBookComponent implements OnInit {
     if (this.isFormValid()) {
       const controls = this.profileForm.controls;
       const book: IBook = {
+        id: Math.random(),
         author: controls["author"].value,
         date: controls["date"].value,
         feedback: controls["feedback"].value,
