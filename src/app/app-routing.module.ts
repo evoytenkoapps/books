@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: MyRoutes.ADD, component: CreateBookComponent },
   { path: MyRoutes.MAIN, component: BooksComponent },
   { path: MyRoutes.MAIN, component: BooksComponent },
+  { path: MyRoutes.BOOK + "/:id", component: BooksComponent },
 ];
 
 @NgModule({

@@ -19,7 +19,7 @@ export class BooksComponent implements OnInit {
     this.books$ = this.dataService.storage$;
   }
 
-  onShowBook(id: number) {
-    this.router.navigate([MyRoutes.BOOK, id]);
+  onShowBook(book: IBook) {
+    this.router.navigate([MyRoutes.BOOK, book.id]);
   }
 }

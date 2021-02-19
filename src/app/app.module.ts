@@ -12,9 +12,11 @@ import { ToolBarComponent } from "./components/tool-bar/tool-bar.component";
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { BookComponent } from './components/book/book.component';
 import { BooksComponent } from './components/books/books.component';
+import { EditBookComponent } from './components/edit-book/edit-book.component';
+import { EditBookFormComponent } from './components/edit-book-form/edit-book-form.component';
 
 @NgModule({
-  declarations: [AppComponent, CreateBookComponent, KeysPipe, ToolBarComponent, SideNavComponent, BookComponent, BooksComponent],
+  declarations: [AppComponent, CreateBookComponent, KeysPipe, ToolBarComponent, SideNavComponent, BookComponent, BooksComponent, EditBookComponent, EditBookFormComponent],
   imports: [
     CommonModule,
     BrowserModule,

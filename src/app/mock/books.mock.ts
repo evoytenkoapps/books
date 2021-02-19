@@ -1,7 +1,7 @@
 import { IBook } from "../model/book";
 
 export class BookMock implements IBook {
-  id: number = Math.random();
+  id: number = +new Date();
   author: string = "author";
   date: Date = new Date();
   feedback: string = "feedback";
