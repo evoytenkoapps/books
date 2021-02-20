@@ -1,0 +1,16 @@
+<app-edit-book-form
+  #editBookFormComponent
+  [book]="book$ | async"
+  [isEdit]="isEdit"
+  (bookChange)="save($event)"
+></app-edit-book-form>
+<button class="main-button main-button--plus" *ngIf="!isEdit" (click)="edit()">
+  Редактировать
+</button>
+<button
+  class="main-button main-button--plus"
+  *ngIf="isEdit"
+  (click)="validateBook()"
+>
+  Сохранить
+</button>

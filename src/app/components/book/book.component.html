@@ -1,0 +1,10 @@
+<img
+  class="book__image"
+  [src]="
+    book.image
+      ? 'data:image/png;base64,' + book.image
+      : '/assets/image/default.png'
+  "
+/>
+<p>Название: {{ book.name }}</p>
+<p>Рейтиг: {{ book.rating }}</p>

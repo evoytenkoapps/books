@@ -1,0 +1,93 @@
+<form class="edit-book-container" [formGroup]="profileForm">
+  <label>
+    Имя
+    <input
+      [formControl]="nameControl"
+      [class.edit-book-error]="nameControl.invalid && nameControl.touched"
+    />
+  </label>
+
+  <label class="book__edit-image">
+    Обложка
+    <input
+      type="file"
+      [multiple]="false"
+      [disabled]="!isEdit"
+      accept="image/png, image/gif, image/jpeg"
+      (change)="onUpLoadAvatar($event.target.files)"
+    />
+    <img
+      class="book__image"
+      *ngIf="imageControl.value"
+      [src]="'data:image/png;base64,' + imageControl.value"
+    />
+  </label>
+  <label>
+    Описание
+    <input
+      [formControl]="titleControl"
+      [class.edit-book-error]="titleControl.invalid && titleControl.touched"
+    />
+  </label>
+  <label>
+    Автор
+    <input
+      [formControl]="authorControl"
+      [class.edit-book-error]="authorControl.invalid && authorControl.touched"
+    />
+  </label>
+  <label>
+    Издательство
+    <input
+      [formControl]="publisherControl"
+      [class.edit-book-error]="
+        publisherControl.invalid && publisherControl.touched
+      "
+    />
+  </label>
+  <label>
+    Код ISBN
+    <input
+      [formControl]="isbnControl"
+      [class.edit-book-error]="isbnControl.invalid && isbnControl.touched"
+    />
+  </label>
+  <label>
+    Год издания
+    <input
+      [formControl]="dateControl"
+      [class.edit-book-error]="dateControl.invalid && dateControl.touched"
+    />
+  </label>
+  <label>
+    Количество страниц
+    <input
+      [formControl]="pagesControl"
+      [class.edit-book-error]="pagesControl.invalid && pagesControl.touched"
+    />
+  </label>
+  <label>
+    Рейтинг
+    <input
+      [formControl]="ratingControl"
+      [class.edit-book-error]="ratingControl.invalid && ratingControl.touched"
+    />
+  </label>
+  <label>
+    Отзывы
+    <input
+      [formControl]="feedbackControl"
+      [class.edit-book-error]="
+        feedbackControl.invalid && feedbackControl.touched
+      "
+    />
+  </label>
+
+  <label>
+    Личные заметки
+    <input
+      [formControl]="noteControl"
+      [class.edit-book-error]="noteControl.invalid && noteControl.touched"
+    />
+  </label>
+</form>
