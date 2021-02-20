@@ -4,7 +4,6 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AddBookComponent } from "./components/add-book/add-book.component";
 import { ReactiveFormsModule } from "@angular/forms";
-import { KeysPipe } from "./pipes/keys.pipe";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { CommonModule, DatePipe } from "@angular/common";
 import { MatSidenavModule } from "@angular/material/sidenav";
@@ -19,7 +18,6 @@ import { EditBookFormComponent } from "./components/edit-book-form/edit-book-for
   declarations: [
     AppComponent,
     AddBookComponent,
-    KeysPipe,
     ToolBarComponent,
     SideNavComponent,
     BookComponent,

@@ -60,10 +60,15 @@ export class EditBookFormComponent implements OnInit, OnChanges {
       ]
     );
 
-    this.pagesControl = new FormControl(this.book.pages);
+    this.pagesControl = new FormControl(
+      this.book.pages,
+      Validators.pattern(
+        /^(0?[1-9]|[12][0-9]|3[01])[.](0?[1-9]|1[012])[.]\d{4}$/
+      )
+    );
     this.ratingControl = new FormControl(
       this.book.rating,
-      Validators.pattern(/^\d+$/)
+      Validators.pattern(/^[+]?([1-9]+(?:[\.][1-9]*)?|\.[1-9]+)$/)
     );
     this.feedbackControl = new FormControl(this.book.feedback);
     this.noteControl = new FormControl(this.book.note);

@@ -62,6 +62,7 @@
   <label>
     Количество страниц
     <input
+      type="number"
       [formControl]="pagesControl"
       [class.edit-book-error]="pagesControl.invalid && pagesControl.touched"
     />
@@ -69,6 +70,7 @@
   <label>
     Рейтинг
     <input
+      type="number"
       [formControl]="ratingControl"
       [class.edit-book-error]="ratingControl.invalid && ratingControl.touched"
     />
