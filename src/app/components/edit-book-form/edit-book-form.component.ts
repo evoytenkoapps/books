@@ -11,6 +11,12 @@ import {
 import { IBook } from "../../model/book";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 
+export type IBaseBook = Exclude<keyof IBook, "id">;
+
+export type BookControls = {
+  [param in IBaseBook]: FormControl;
+};
+
 @Component({
   selector: "app-edit-book-form",
   templateUrl: "./edit-book-form.component.html",
@@ -39,6 +45,8 @@ export class EditBookFormComponent implements OnInit, OnChanges {
   constructor() {}
 
   ngOnInit() {
+    const x: IBaseBook = {};
+
     this.nameControl = new FormControl(this.book.name, [Validators.required]);
     this.imageControl = new FormControl(this.book.image);
     this.titleControl = new FormControl(this.book.title, Validators.required);
@@ -73,19 +81,35 @@ export class EditBookFormComponent implements OnInit, OnChanges {
     this.feedbackControl = new FormControl(this.book.feedback);
     this.noteControl = new FormControl(this.book.note);
 
-    this.profileForm = new FormGroup({
-      name: this.nameControl,
+    // this.profileForm = new FormGroup({
+    //   name: this.nameControl,
+    //   image: this.imageControl,
+    //   title: this.titleControl,
+    //   author: this.authorControl,
+    //   publisher: this.publisherControl,
+    //   isbn: this.isbnControl,
+    //   date: this.dateControl,
+    //   pages: this.pagesControl,
+    //   rating: this.ratingControl,
+    //   feedback: this.feedbackControl,
+    //   note: this.noteControl,
+    // });
+
+    const controls: BookControls = {
+      date: this.dateControl,
+      feedback: this.feedbackControl,
       image: this.imageControl,
+      isbn: this.isbnControl,
+      name: this.nameControl,
+      note: this.noteControl,
+      pages: this.pagesControl,
+      publisher: this.publisherControl,
+      rating: this.ratingControl,
       title: this.titleControl,
       author: this.authorControl,
-      publisher: this.publisherControl,
-      isbn: this.isbnControl,
-      date: this.dateControl,
-      pages: this.pagesControl,
-      rating: this.ratingControl,
-      feedback: this.feedbackControl,
-      note: this.noteControl,
-    });
+    };
+
+    this.profileForm = new FormGroup(controls);
 
     this.isEdit ? this.profileForm.enable() : this.profileForm.disable();
   }
