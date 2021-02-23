@@ -1,10 +1,10 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
-import {BookService} from "../../service/book.service";
-import {IBook} from "../../model/book";
-import {Router} from "@angular/router";
-import {Observable} from "rxjs";
-import {map, tap} from "rxjs/operators";
-import {EditBookFormComponent} from "../edit-book-form/edit-book-form.component";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { BookService } from "../../service/book.service";
+import { IBook } from "../../model/book";
+import { Router } from "@angular/router";
+import { Observable } from "rxjs";
+import { map, tap } from "rxjs/operators";
+import { EditBookFormComponent } from "../edit-book-form/edit-book-form.component";
 
 @Component({
   selector: "app-edit-book",
@@ -32,13 +32,14 @@ export class EditBookComponent implements OnInit {
     this.isEdit = true;
   }
 
-  public validateBook() {
-    this.editBookFormComponent.validateBook();
-  }
-
-  public save(book: IBook) {
-    console.log("save", book);
-    this.isEdit = false;
-    this.bookService.saveBook(book);
+  public save() {
+    const form = this.editBookFormComponent.bookFormGroup;
+    if (form.valid) {
+      console.log("save");
+      this.isEdit = false;
+      this.bookService.saveBook(form.getBook());
+    } else {
+      this.editBookFormComponent.bookFormGroup.markAllAsTouched();
+    }
   }
 }

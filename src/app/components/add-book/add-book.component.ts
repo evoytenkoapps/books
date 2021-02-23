@@ -1,7 +1,7 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
-import {BookService} from "../../service/book.service";
-import {IBook} from "../../model/book";
-import {EditBookFormComponent} from "../edit-book-form/edit-book-form.component";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { BookService } from "../../service/book.service";
+import { IBook } from "../../model/book";
+import { EditBookFormComponent } from "../edit-book-form/edit-book-form.component";
 
 @Component({
   selector: "app-add-book",
@@ -34,11 +34,12 @@ export class AddBookComponent implements OnInit {
   }
 
   public addBook() {
-    this.editBookFormComponent.validateBook();
-  }
-
-  public onAddBook(book: IBook) {
-    this.dataService.add(book);
-    this.editBookFormComponent.rest();
+    const form = this.editBookFormComponent.bookFormGroup;
+    if (form.valid) {
+      this.dataService.add(form.getBook());
+      this.editBookFormComponent.rest();
+    } else {
+      form.markAllAsTouched();
+    }
   }
 }

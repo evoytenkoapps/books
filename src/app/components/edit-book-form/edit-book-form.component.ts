@@ -8,8 +8,9 @@ import {
   SimpleChanges,
 } from "@angular/core";
 import { IBook } from "../../model/book";
-import { BookControls, IBaseBook } from "./book-controls";
+import { BookControls, IBaseBook, IBookControls } from "./book-controls";
 import { FormGroup } from "@angular/forms";
+import { BookFormGroup } from "./book-form-group";
 
 @Component({
   selector: "app-edit-book-form",
@@ -19,33 +20,16 @@ import { FormGroup } from "@angular/forms";
 export class EditBookFormComponent implements OnInit, OnChanges {
   @Input() book: IBook;
   @Input() isEdit: boolean;
-  @Output() bookChange: EventEmitter<IBook> = new EventEmitter<IBook>();
 
-  public bookControls: BookControls;
-  public bookFormGroup: FormGroup;
+  public bookControls: IBookControls;
+  public bookFormGroup: BookFormGroup;
 
   constructor() {}
 
   ngOnInit() {
-    this.bookControls = new BookControls(this.book);
-    this.bookFormGroup = new FormGroup({ ...this.bookControls });
+    this.bookFormGroup = new BookFormGroup(this.book);
+    this.bookControls = this.bookFormGroup.controls;
     this.isEdit ? this.bookFormGroup.enable() : this.bookFormGroup.disable();
-  }
-
-  public validateBook() {
-    if (this.isFormValid()) {
-      const baseBook: IBaseBook = this.bookControls.getBook();
-      const book: IBook = { ...baseBook, id: this.book.id };
-      console.log("changeBook", book);
-      this.bookChange.emit(book);
-    } else {
-      this.bookFormGroup.markAllAsTouched();
-    }
-  }
-
-  private isFormValid(): boolean {
-    console.log("isFormValid", this.bookFormGroup.valid);
-    return this.bookFormGroup.valid;
   }
 
   ngOnChanges(changes: SimpleChanges): void {

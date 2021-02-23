@@ -10,7 +10,6 @@ export type BookFormControls = {
 export type IBaseBook = { [param in BaseBook]: any };
 
 export interface IBookControls extends BookFormControls {
-  getBook(): IBaseBook;
 }
 
 export class BookControls implements IBookControls {
@@ -53,21 +52,5 @@ export class BookControls implements IBookControls {
     );
     this.feedback = new FormControl(book.feedback);
     this.note = new FormControl(book.note);
-  }
-
-  public getBook(): IBaseBook {
-    return {
-      rating: this.rating.value,
-      note: this.note.value,
-      date: moment(this.date.value, dateTemplate).toDate(),
-      pages: this.pages.value,
-      publisher: this.publisher.value,
-      title: this.title.value,
-      name: this.name.value,
-      isbn: this.isbn.value,
-      image: this.image.value,
-      feedback: this.feedback.value,
-      author: this.author.value,
-    } as IBaseBook;
   }
 }
