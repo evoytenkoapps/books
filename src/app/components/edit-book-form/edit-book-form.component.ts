@@ -44,13 +44,8 @@ export class EditBookFormComponent implements OnInit, OnChanges {
   }
 
   private isFormValid(): boolean {
-    console.log("isFormValid");
-    for (const control in this.bookFormGroup.controls) {
-      if (this.bookFormGroup.controls[control].invalid) {
-        return false;
-      }
-    }
-    return true;
+    console.log("isFormValid", this.bookFormGroup.valid);
+    return this.bookFormGroup.valid;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
