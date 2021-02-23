@@ -1,12 +1,7 @@
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  Router,
-  RouterStateSnapshot,
-} from "@angular/router";
-import { Injectable } from "@angular/core";
-import { BookService } from "../service/book.service";
-import { MyRoutes } from "../model/routes";
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot,} from "@angular/router";
+import {Injectable} from "@angular/core";
+import {BookService} from "../service/book.service";
+import {MyRoutes} from "../model/routes";
 
 @Injectable({ providedIn: "root" })
 export class EditBookGuard implements CanActivate {

@@ -1,9 +1,11 @@
-<form class="edit-book-container" [formGroup]="profileForm">
+<form class="edit-book-container" [formGroup]="bookFormGroup">
   <label>
     Имя
     <input
-      [formControl]="nameControl"
-      [class.edit-book-error]="nameControl.invalid && nameControl.touched"
+      [formControl]="bookControls.name"
+      [class.edit-book-error]="
+        bookControls.name.invalid && bookControls.name.touched
+      "
     />
   </label>
 
@@ -18,69 +20,81 @@
     />
     <img
       class="book__image"
-      *ngIf="imageControl.value"
-      [src]="'data:image/png;base64,' + imageControl.value"
+      *ngIf="bookControls.image.value"
+      [src]="'data:image/png;base64,' + bookControls.image.value"
     />
   </label>
   <label>
     Описание
     <input
-      [formControl]="titleControl"
-      [class.edit-book-error]="titleControl.invalid && titleControl.touched"
+      [formControl]="bookControls.title"
+      [class.edit-book-error]="
+        bookControls.title.invalid && bookControls.title.touched
+      "
     />
   </label>
   <label>
     Автор
     <input
-      [formControl]="authorControl"
-      [class.edit-book-error]="authorControl.invalid && authorControl.touched"
+      [formControl]="bookControls.author"
+      [class.edit-book-error]="
+        bookControls.author.invalid && bookControls.author.touched
+      "
     />
   </label>
   <label>
     Издательство
     <input
-      [formControl]="publisherControl"
+      [formControl]="bookControls.publisher"
       [class.edit-book-error]="
-        publisherControl.invalid && publisherControl.touched
+        bookControls.publisher.invalid && bookControls.publisher.touched
       "
     />
   </label>
   <label>
     Код ISBN
     <input
-      [formControl]="isbnControl"
-      [class.edit-book-error]="isbnControl.invalid && isbnControl.touched"
+      [formControl]="bookControls.isbn"
+      [class.edit-book-error]="
+        bookControls.isbn.invalid && bookControls.isbn.touched
+      "
     />
   </label>
   <label>
     Год издания
     <input
-      [formControl]="dateControl"
-      [class.edit-book-error]="dateControl.invalid && dateControl.touched"
+      [formControl]="bookControls.date"
+      [class.edit-book-error]="
+        bookControls.date.invalid && bookControls.date.touched
+      "
     />
   </label>
   <label>
     Количество страниц
     <input
       type="number"
-      [formControl]="pagesControl"
-      [class.edit-book-error]="pagesControl.invalid && pagesControl.touched"
+      [formControl]="bookControls.pages"
+      [class.edit-book-error]="
+        bookControls.pages.invalid && bookControls.pages.touched
+      "
     />
   </label>
   <label>
     Рейтинг
     <input
       type="number"
-      [formControl]="ratingControl"
-      [class.edit-book-error]="ratingControl.invalid && ratingControl.touched"
+      [formControl]="bookControls.rating"
+      [class.edit-book-error]="
+        bookControls.rating.invalid && bookControls.rating.touched
+      "
     />
   </label>
   <label>
     Отзывы
     <input
-      [formControl]="feedbackControl"
+      [formControl]="bookControls.feedback"
       [class.edit-book-error]="
-        feedbackControl.invalid && feedbackControl.touched
+        bookControls.feedback.invalid && bookControls.feedback.touched
       "
     />
   </label>
@@ -88,8 +102,10 @@
   <label>
     Личные заметки
     <input
-      [formControl]="noteControl"
-      [class.edit-book-error]="noteControl.invalid && noteControl.touched"
+      [formControl]="bookControls.note"
+      [class.edit-book-error]="
+        bookControls.note.invalid && bookControls.note.touched
+      "
     />
   </label>
 </form>

@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { BookService } from "../../service/book.service";
-import { IBook } from "../../model/book";
-import { Router } from "@angular/router";
-import { Observable } from "rxjs";
-import { map, tap } from "rxjs/operators";
-import { EditBookFormComponent } from "../edit-book-form/edit-book-form.component";
+import {Component, OnInit, ViewChild} from "@angular/core";
+import {BookService} from "../../service/book.service";
+import {IBook} from "../../model/book";
+import {Router} from "@angular/router";
+import {Observable} from "rxjs";
+import {map, tap} from "rxjs/operators";
+import {EditBookFormComponent} from "../edit-book-form/edit-book-form.component";
 
 @Component({
   selector: "app-edit-book",

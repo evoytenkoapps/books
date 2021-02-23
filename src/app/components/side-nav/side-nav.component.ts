@@ -1,6 +1,6 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { MyRoutes } from "../../model/routes";
+import {Component, OnInit} from "@angular/core";
+import {Router} from "@angular/router";
+import {MyRoutes} from "../../model/routes";
 
 @Component({
   selector: "app-side-nav",

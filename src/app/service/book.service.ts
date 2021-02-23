@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { IBook } from "../model/book";
-import { BehaviorSubject } from "rxjs";
-import { BookMock } from "../mock/books.mock";
+import {Injectable} from "@angular/core";
+import {IBook} from "../model/book";
+import {BehaviorSubject} from "rxjs";
+import {BookMock} from "../mock/books.mock";
 
 @Injectable({ providedIn: "root" })
 export class BookService {
