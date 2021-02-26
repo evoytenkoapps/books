@@ -3,6 +3,8 @@ import { IBook } from "../../model/book";
 import { BookControls, IBaseBook, IBookControls } from "./book-controls";
 import { FormGroup } from "@angular/forms";
 import { BookFormGroup } from "./book-form-group";
+import { combineLatest, merge } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Component({
   selector: "app-edit-book-form",
@@ -22,6 +24,13 @@ export class EditBookFormComponent implements OnInit, OnChanges {
     this.bookFormGroup = new BookFormGroup(this.book);
     this.bookControls = this.bookFormGroup.controls;
     this.isEdit ? this.bookFormGroup.enable() : this.bookFormGroup.disable();
+
+    combineLatest(
+      this.bookFormGroup.valueChanges.pipe(
+        map((data: IBaseBook) => ({ ...data, id: this.book.id } as IBook))
+      ),
+      this.bookFormGroup.statusChanges
+    ).subscribe(([data1, data2]) => console.log("combineLatest", data1, data2));
   }
 
   ngOnChanges(changes: SimpleChanges): void {
