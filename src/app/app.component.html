@@ -4,10 +4,7 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <app-tool-bar
-      class="toolbar"
-      (changeClick)="opened = !opened"
-    ></app-tool-bar>
+    <app-tool-bar class="toolbar" (changeClick)="opened = !opened"></app-tool-bar>
     <div class="content">
       <router-outlet></router-outlet>
     </div>

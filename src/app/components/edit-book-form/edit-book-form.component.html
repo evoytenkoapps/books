@@ -3,9 +3,7 @@
     Имя
     <input
       [formControl]="bookControls.name"
-      [class.edit-book-error]="
-        bookControls.name.invalid && bookControls.name.touched
-      "
+      [class.edit-book-error]="bookControls.name.invalid && bookControls.name.touched"
     />
   </label>
 
@@ -28,45 +26,35 @@
     Описание
     <input
       [formControl]="bookControls.title"
-      [class.edit-book-error]="
-        bookControls.title.invalid && bookControls.title.touched
-      "
+      [class.edit-book-error]="bookControls.title.invalid && bookControls.title.touched"
     />
   </label>
   <label>
     Автор
     <input
       [formControl]="bookControls.author"
-      [class.edit-book-error]="
-        bookControls.author.invalid && bookControls.author.touched
-      "
+      [class.edit-book-error]="bookControls.author.invalid && bookControls.author.touched"
     />
   </label>
   <label>
     Издательство
     <input
       [formControl]="bookControls.publisher"
-      [class.edit-book-error]="
-        bookControls.publisher.invalid && bookControls.publisher.touched
-      "
+      [class.edit-book-error]="bookControls.publisher.invalid && bookControls.publisher.touched"
     />
   </label>
   <label>
     Код ISBN
     <input
       [formControl]="bookControls.isbn"
-      [class.edit-book-error]="
-        bookControls.isbn.invalid && bookControls.isbn.touched
-      "
+      [class.edit-book-error]="bookControls.isbn.invalid && bookControls.isbn.touched"
     />
   </label>
   <label>
     Год издания
     <input
       [formControl]="bookControls.date"
-      [class.edit-book-error]="
-        bookControls.date.invalid && bookControls.date.touched
-      "
+      [class.edit-book-error]="bookControls.date.invalid && bookControls.date.touched"
     />
   </label>
   <label>
@@ -74,9 +62,7 @@
     <input
       type="number"
       [formControl]="bookControls.pages"
-      [class.edit-book-error]="
-        bookControls.pages.invalid && bookControls.pages.touched
-      "
+      [class.edit-book-error]="bookControls.pages.invalid && bookControls.pages.touched"
     />
   </label>
   <label>
@@ -84,18 +70,14 @@
     <input
       type="number"
       [formControl]="bookControls.rating"
-      [class.edit-book-error]="
-        bookControls.rating.invalid && bookControls.rating.touched
-      "
+      [class.edit-book-error]="bookControls.rating.invalid && bookControls.rating.touched"
     />
   </label>
   <label>
     Отзывы
     <input
       [formControl]="bookControls.feedback"
-      [class.edit-book-error]="
-        bookControls.feedback.invalid && bookControls.feedback.touched
-      "
+      [class.edit-book-error]="bookControls.feedback.invalid && bookControls.feedback.touched"
     />
   </label>
 
@@ -103,9 +85,7 @@
     Личные заметки
     <input
       [formControl]="bookControls.note"
-      [class.edit-book-error]="
-        bookControls.note.invalid && bookControls.note.touched
-      "
+      [class.edit-book-error]="bookControls.note.invalid && bookControls.note.touched"
     />
   </label>
 </form>

@@ -21,9 +21,7 @@ export class EditBookComponent implements OnInit {
 
   ngOnInit() {
     this.book$ = this.bookService.storage$.pipe(
-      map((books) =>
-        books.find((book) => book.id === +this.router.url.split("/")[2])
-      ),
+      map((books) => books.find((book) => book.id === +this.router.url.split("/")[2])),
       tap((book) => console.log("bookis", book))
     );
   }

@@ -1,12 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-} from "@angular/core";
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from "@angular/core";
 import { IBook } from "../../model/book";
 import { BookControls, IBaseBook, IBookControls } from "./book-controls";
 import { FormGroup } from "@angular/forms";
@@ -36,9 +28,7 @@ export class EditBookFormComponent implements OnInit, OnChanges {
     console.log("changes", changes);
 
     if (changes.isEdit && this.bookFormGroup) {
-      changes.isEdit.currentValue
-        ? this.bookFormGroup.enable()
-        : this.bookFormGroup.disable();
+      changes.isEdit.currentValue ? this.bookFormGroup.enable() : this.bookFormGroup.disable();
     }
   }
 

@@ -1,9 +1,9 @@
-import {Component, OnInit} from "@angular/core";
-import {BookService} from "../../service/book.service";
-import {Observable} from "rxjs";
-import {IBook} from "../../model/book";
-import {Router} from "@angular/router";
-import {MyRoutes} from "../../model/routes";
+import { Component, OnInit } from "@angular/core";
+import { BookService } from "../../service/book.service";
+import { Observable } from "rxjs";
+import { IBook } from "../../model/book";
+import { Router } from "@angular/router";
+import { MyRoutes } from "../../model/routes";
 
 @Component({
   selector: "app-books",

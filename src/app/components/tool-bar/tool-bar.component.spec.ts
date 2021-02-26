@@ -1,6 +1,6 @@
-import {async, ComponentFixture, TestBed} from "@angular/core/testing";
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {ToolBarComponent} from "./tool-bar.component";
+import { ToolBarComponent } from "./tool-bar.component";
 
 describe("ToolBarComponent", () => {
   let component: ToolBarComponent;

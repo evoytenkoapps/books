@@ -1,18 +1,10 @@
 import { FormGroup } from "@angular/forms";
-import {
-  BaseBook,
-  BookControls,
-  dateTemplate,
-  IBaseBook,
-} from "./book-controls";
+import { BaseBook, BookControls, dateTemplate, IBaseBook } from "./book-controls";
 import { IBook } from "../../model/book";
 import * as moment from "moment";
 
 export class BookFormGroup extends FormGroup {
-  constructor(
-    private book: IBook,
-    public controls = { ...new BookControls(book) }
-  ) {
+  constructor(private book: IBook, public controls = { ...new BookControls(book) }) {
     super(controls);
   }
 
